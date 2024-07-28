@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/pizzaLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/pizzaBase"
+            android:contentDescription="@string/img_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pizza_base"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:contentDescription="@string/img_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/cheese"
+            android:src="@drawable/base_cheese"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:contentDescription="@string/img_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mushroom"
+            android:src="@drawable/mushroom"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tomato"
+            android:contentDescription="@string/img_desc"
+            android:src="@drawable/tomato"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/img_desc"
+            android:id="@+id/olive"
+            android:visibility="gone"
+            android:src="@drawable/olive"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:contentDescription="@string/img_desc"
+            android:id="@+id/basil"
+            android:src="@drawable/basil"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pineapple"
+            android:contentDescription="@string/img_desc"
+            android:src="@drawable/pineapple"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chooseOption"
+        android:layout_marginHorizontal="10dp"
+        android:layout_below="@id/pizzaLayout">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/checkCheese"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>
