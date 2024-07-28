@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".OrderActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selected_ingridents"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/ingridents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_marginVertical="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textCheese"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cheese"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textMushroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mushroom"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textTomato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tomato"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textOlive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/olive"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textBasil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/basil"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textPineapple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pineapple"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ingridents">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonBack"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@color/button_color"
+            android:text="@string/back"
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonConfirm"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@color/button_color"
+            android:text="@string/confirm"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgMan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonLayout"
+        android:contentDescription="@string/img_desc" />
+</RelativeLayout>
