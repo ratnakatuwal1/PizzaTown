@@ -2,6 +2,9 @@ package com.ratna.pizzatown;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -9,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,9 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+
+
         cheeseImage = findViewById(R.id.cheese);
         mushroomImage = findViewById(R.id.mushroom);
         tomatoImage = findViewById(R.id.tomato);
@@ -102,5 +112,50 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("pineapple", isPineappleChecked);
             startActivity(intent);
         });
+    }
+
+    public Boolean OnCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.firstmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.magarita:
+                cheeseCheckBox.setSelected(true);
+                tomatoCheckBox.setSelected(true);
+                basilCheckBox.setSelected(true);
+
+                pineappleCheckBox.setSelected(false);
+                oliveCheckBox.setSelected(false);
+                mushroomCheckBox.setSelected(false);
+                return true;
+
+                case R.id.mushroom:
+                    cheeseCheckBox.setSelected(true);
+                    tomatoCheckBox.setSelected(true);
+                    basilCheckBox.setSelected(false);
+
+                    pineappleCheckBox.setSelected(false);
+                    oliveCheckBox.setSelected(true);
+                    mushroomCheckBox.setSelected(true);
+                    return true;
+
+                    case R.id.newyork:
+                        cheeseCheckBox.setSelected(true);
+                        tomatoCheckBox.setSelected(true);
+                        basilCheckBox.setSelected(true);
+
+                        pineappleCheckBox.setSelected(true);
+                        oliveCheckBox.setSelected(true);
+                        mushroomCheckBox.setSelected(true);
+                        return true;
+
+                        default:
+                        return super.onOptionsItemSelected(item);
+        }
+
     }
 }
