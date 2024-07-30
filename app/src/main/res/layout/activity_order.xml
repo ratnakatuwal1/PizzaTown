@@ -76,10 +76,11 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:entries="@array/pizzaTypes"
-           android:id="@+id/pizzaType"/>
+           android:id="@+id/pizzaSize"/>
 
         <Spinner
             android:id="@+id/pizzaQuantity"
+            android:entries="@array/quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -118,8 +119,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonLayout"
         android:contentDescription="@string/img_desc"
-        android:src="@drawable/pizza_man"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:visibility="visible"/>
+        android:src="@drawable/pizza_man" />
 </RelativeLayout>

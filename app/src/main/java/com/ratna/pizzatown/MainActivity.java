@@ -1,5 +1,6 @@
 package com.ratna.pizzatown;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -108,20 +110,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("RestrictedApi")
     public Boolean OnCreateOptionsMenu(Menu menu) {
+        if (menu instanceof MenuBuilder) {
+            MenuBuilder menuBuilder = (MenuBuilder) menu;
+            menuBuilder.setOptionalIconsVisible(true);
+        }
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.firstmenu, menu);
+        inflater.inflate(R.menu.option_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.magarita:
+            case R.id.margarita:
                 cheeseCheckBox.setChecked(true);
                 tomatoCheckBox.setChecked(true);
                 basilCheckBox.setChecked(true);
-
                 pineappleCheckBox.setChecked(false);
                 oliveCheckBox.setChecked(false);
                 mushroomCheckBox.setChecked(false);
@@ -131,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
                 cheeseCheckBox.setChecked(true);
                 tomatoCheckBox.setChecked(true);
                 basilCheckBox.setChecked(false);
-
                 pineappleCheckBox.setChecked(false);
                 oliveCheckBox.setChecked(true);
                 mushroomCheckBox.setChecked(true);
@@ -141,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
                 cheeseCheckBox.setChecked(true);
                 tomatoCheckBox.setChecked(true);
                 basilCheckBox.setChecked(true);
-
                 pineappleCheckBox.setChecked(true);
                 oliveCheckBox.setChecked(true);
                 mushroomCheckBox.setChecked(true);

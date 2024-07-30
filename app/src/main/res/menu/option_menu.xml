@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:title="@string/margaritaOption"
+    android:id="@+id/margarita"
+    android:icon="@drawable/icon_menu1"
+    app:showAsAction="withText"/>
+
+    <item
+        android:title="@string/mushroomOption"
+        android:id="@+id/mushroom"
+        android:icon="@drawable/baseline_fastfood_24"
+        app:showAsAction="withText"/>
+
+    <item
+        android:title="@string/newYorkOption"
+        android:id="@+id/newyork"
+        android:icon="@drawable/menu3"
+        app:showAsAction="withText"/>
+
+</menu>
