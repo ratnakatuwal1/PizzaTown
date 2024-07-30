@@ -17,9 +17,6 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class OrderActivity extends AppCompatActivity {
     TextView cheeseText, mushroomText, tomatoText, oliveText, basilText, pineappleText;
@@ -33,20 +30,17 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_order);
+
         cheeseText = findViewById(R.id.textCheese);
         mushroomText = findViewById(R.id.textMushroom);
         tomatoText = findViewById(R.id.textTomato);
         oliveText = findViewById(R.id.textOlive);
         basilText = findViewById(R.id.textBasil);
         pineappleText = findViewById(R.id.textPineapple);
-        backButton.findViewById(R.id.buttonBack);
-        confirmButton.findViewById(R.id.buttonConfirm);
+        backButton =  findViewById(R.id.buttonBack);
+        confirmButton = findViewById(R.id.buttonConfirm);
         typeSpinner = findViewById(R.id.pizzaSize);
         quantitySpinner = findViewById(R.id.pizzaQuantity);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, quantity);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        quantitySpinner.setAdapter(adapter);
         registerForContextMenu(confirmButton);
 
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -62,6 +56,10 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(OrderActivity.this, android.R.layout.simple_spinner_item, quantity);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        quantitySpinner.setAdapter(adapter);
+
         quantitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -74,18 +72,65 @@ public class OrderActivity extends AppCompatActivity {
 
             }
         });
+
         renderIngredients();
+
         backButton.setOnClickListener(view -> {
             finish();
         });
 
         confirmButton.setOnClickListener(view -> {
             // code here for popup menu
-            showConfirmPopup(view);
+            showPopUpMenu(view);
         });
     }
 
-    private void renderIngredients() {
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.confirm_context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.single:
+                typeSpinner.setSelection(0);
+                quantitySpinner.setSelection(1);
+                return true;
+
+            case R.id.homeParty:
+                typeSpinner.setSelection(2);
+                quantitySpinner.setSelection(3);
+                return true;
+
+            case R.id.officeLunch:
+                typeSpinner.setSelection(4);
+                quantitySpinner.setSelection(2);
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    public void showPopUpMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(OrderActivity.this, view);
+        popupMenu.inflate(R.menu.confirm_popup_menu);
+        popupMenu.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()) {
+                case R.id.dineIn:
+                    Toast.makeText(OrderActivity.this, "Your order has been successfully placed food dine in", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.takeAway:
+                    Toast.makeText(OrderActivity.this, "Your order has been successfully placed food take away", Toast.LENGTH_SHORT).show();
+                    return true;
+            }
+            return false;
+        });
+        popupMenu.show();
+    }
+
+    void renderIngredients() {
         intent = getIntent();
         boolean isCheese = intent.getBooleanExtra("cheese", false);
         if (isCheese) {
@@ -116,56 +161,5 @@ public class OrderActivity extends AppCompatActivity {
         if (isPineapple) {
             pineappleText.setVisibility(View.VISIBLE);
         }
-    }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.confirm_context_menu, menu);
-    }
-
-    @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.single:
-                typeSpinner.setSelection(1);
-                quantitySpinner.setSelection(1);
-                return true;
-
-            case R.id.homeParty:
-                typeSpinner.setSelection(2);
-                quantitySpinner.setSelection(3);
-                return true;
-
-            case R.id.officeLunch:
-                typeSpinner.setSelection(3);
-                quantitySpinner.setSelection(4);
-                return true;
-
-            default:
-                return super.onContextItemSelected(item);
-        }
-    }
-
-    public void showConfirmPopup(View view) {
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.inflate(R.menu.confirm_popup_menu);
-
-        popupMenu.setOnMenuItemClickListener(menuItem -> {
-            switch (menuItem.getItemId()) {
-                case R.id.dineIn:
-                    Toast.makeText(OrderActivity.this, "Your order has been successfully placed food dine in", Toast.LENGTH_SHORT).show();
-                    return true;
-
-                case R.id.takeAway:
-                    Toast.makeText(OrderActivity.this, "Your order has been successfully placed food take away", Toast.LENGTH_SHORT).show();
-                    return true;
-
-                default:
-                    return false;
-            }
-        });
-        popupMenu.show();
     }
 }

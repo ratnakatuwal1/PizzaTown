@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context=".OrderActivity">
 
     <TextView
@@ -13,30 +11,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/selected_ingridents"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
 
     <LinearLayout
         android:id="@+id/ingridents"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
-        android:layout_marginVertical="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textCheese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/cheese"
             android:textStyle="bold"
-            android:visibility="gone" />
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="35dp"
+            android:visibility="gone"
+             />
 
         <TextView
             android:id="@+id/textMushroom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mushroom"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="35dp"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -45,6 +57,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tomato"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="35dp"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -53,6 +69,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/olive"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="35dp"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -61,6 +81,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/basil"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="35dp"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -69,6 +93,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pineapple"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="35dp"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -76,11 +104,13 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:entries="@array/pizzaTypes"
+           android:layout_marginTop="20dp"
            android:id="@+id/pizzaSize"/>
 
         <Spinner
             android:id="@+id/pizzaQuantity"
             android:entries="@array/quantity"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -90,24 +120,31 @@
         style="?android:attr/buttonBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ingridents">
+        android:layout_below="@+id/ingridents"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonBack"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
             android:backgroundTint="@color/button_color"
             android:text="@string/back"
             android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/buttonConfirm"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
             android:backgroundTint="@color/button_color"
             android:text="@string/confirm"
             android:textColor="@color/black" />
@@ -115,9 +152,11 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgMan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_below="@id/buttonLayout"
         android:contentDescription="@string/img_desc"
-        android:src="@drawable/pizza_man" />
+        android:src="@drawable/pizza_man"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"/>
 </RelativeLayout>
