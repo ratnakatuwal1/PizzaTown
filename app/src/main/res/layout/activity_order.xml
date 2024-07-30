@@ -71,6 +71,17 @@
             android:text="@string/pineapple"
             android:textStyle="bold"
             android:visibility="gone" />
+
+       <Spinner
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:entries="@array/pizzaTypes"
+           android:id="@+id/pizzaType"/>
+
+        <Spinner
+            android:id="@+id/pizzaQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout
@@ -106,5 +117,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonLayout"
-        android:contentDescription="@string/img_desc" />
+        android:contentDescription="@string/img_desc"
+        android:src="@drawable/pizza_man"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="visible"/>
 </RelativeLayout>

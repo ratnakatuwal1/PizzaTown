@@ -3,8 +3,12 @@ package com.ratna.pizzatown;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +20,8 @@ public class OrderActivity extends AppCompatActivity {
     TextView cheeseText, mushroomText, tomatoText, oliveText, basilText, pineappleText;
     Button backButton, confirmButton;
     Intent intent;
+    String[] quantity = {"one", "two", "three", "four", "five"};
+    Spinner typeSpinner, quantitySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,39 @@ public class OrderActivity extends AppCompatActivity {
         pineappleText = findViewById(R.id.textPineapple);
         backButton.findViewById(R.id.buttonBack);
         confirmButton.findViewById(R.id.buttonConfirm);
+        typeSpinner = findViewById(R.id.pizzaType);
+        quantitySpinner = findViewById(R.id.pizzaQuantity);
+
+
+        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String type = parent.getItemAtPosition(position).toString();
+                Toast.makeText(OrderActivity.this, type, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayAdapter adpater = new ArrayAdapter(OrderActivity.this, android.R.layout.simple_spinner_item, quantity);
+        adpater.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        quantitySpinner.setAdapter(adpater);
+
+        quantitySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String type = parent.getItemAtPosition(position).toString();
+                Toast.makeText(OrderActivity.this, type, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         renderIngredients();
 

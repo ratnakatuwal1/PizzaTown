@@ -26,15 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
-
-
         cheeseImage = findViewById(R.id.cheese);
         mushroomImage = findViewById(R.id.mushroom);
         tomatoImage = findViewById(R.id.tomato);
@@ -114,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public Boolean OnCreateOptionsMenu(Menu menu){
+    public Boolean OnCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.firstmenu, menu);
         return true;
@@ -122,40 +116,39 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.magarita:
-                cheeseCheckBox.setSelected(true);
-                tomatoCheckBox.setSelected(true);
-                basilCheckBox.setSelected(true);
+                cheeseCheckBox.setChecked(true);
+                tomatoCheckBox.setChecked(true);
+                basilCheckBox.setChecked(true);
 
-                pineappleCheckBox.setSelected(false);
-                oliveCheckBox.setSelected(false);
-                mushroomCheckBox.setSelected(false);
+                pineappleCheckBox.setChecked(false);
+                oliveCheckBox.setChecked(false);
+                mushroomCheckBox.setChecked(false);
                 return true;
 
-                case R.id.mushroom:
-                    cheeseCheckBox.setSelected(true);
-                    tomatoCheckBox.setSelected(true);
-                    basilCheckBox.setSelected(false);
+            case R.id.mushroom:
+                cheeseCheckBox.setChecked(true);
+                tomatoCheckBox.setChecked(true);
+                basilCheckBox.setChecked(false);
 
-                    pineappleCheckBox.setSelected(false);
-                    oliveCheckBox.setSelected(true);
-                    mushroomCheckBox.setSelected(true);
-                    return true;
+                pineappleCheckBox.setChecked(false);
+                oliveCheckBox.setChecked(true);
+                mushroomCheckBox.setChecked(true);
+                return true;
 
-                    case R.id.newyork:
-                        cheeseCheckBox.setSelected(true);
-                        tomatoCheckBox.setSelected(true);
-                        basilCheckBox.setSelected(true);
+            case R.id.newyork:
+                cheeseCheckBox.setChecked(true);
+                tomatoCheckBox.setChecked(true);
+                basilCheckBox.setChecked(true);
 
-                        pineappleCheckBox.setSelected(true);
-                        oliveCheckBox.setSelected(true);
-                        mushroomCheckBox.setSelected(true);
-                        return true;
+                pineappleCheckBox.setChecked(true);
+                oliveCheckBox.setChecked(true);
+                mushroomCheckBox.setChecked(true);
+                return true;
 
-                        default:
-                        return super.onOptionsItemSelected(item);
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
     }
 }
