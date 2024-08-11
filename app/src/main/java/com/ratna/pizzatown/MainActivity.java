@@ -43,32 +43,56 @@ public class MainActivity extends AppCompatActivity {
 
         cheeseCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             isCheeseChecked = isChecked;
-            cheeseImage.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            if (isChecked) {
+                cheeseImage.setVisibility(View.VISIBLE);
+            } else {
+                cheeseImage.setVisibility(View.GONE);
+            }
         });
 
         mushroomCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             isMushroomChecked = isChecked;
-            mushroomImage.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            if (isChecked) {
+                mushroomImage.setVisibility(View.VISIBLE);
+            } else {
+                mushroomImage.setVisibility(View.GONE);
+            }
         });
 
         tomatoCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             isTomatoChecked = isChecked;
-            tomatoImage.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            if (isChecked) {
+                tomatoImage.setVisibility(View.VISIBLE);
+            } else {
+                tomatoImage.setVisibility(View.GONE);
+            }
         });
 
         oliveCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             isOliveChecked = isChecked;
-            oliveImage.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            if (isChecked) {
+                oliveImage.setVisibility(View.VISIBLE);
+            } else {
+                oliveImage.setVisibility(View.GONE);
+            }
         });
 
         basilCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             isBasilChecked = isChecked;
-            basilImage.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            if (isChecked) {
+                basilImage.setVisibility(View.VISIBLE);
+            } else {
+                basilImage.setVisibility(View.GONE);
+            }
         });
 
         pineappleCheckBox.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             isPineappleChecked = isChecked;
-            pineappleImage.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            if (isChecked) {
+                pineappleImage.setVisibility(View.VISIBLE);
+            } else {
+                pineappleImage.setVisibility(View.GONE);
+            }
         });
 
         orderButton.setOnClickListener(view -> {
@@ -82,17 +106,22 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+    @SuppressLint("RestrictedApi")
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (menu instanceof  MenuBuilder){
+           MenuBuilder menuBuilder = (MenuBuilder) menu;
+           menuBuilder.setOptionalIconsVisible(true);
+        }
 
-    public Boolean OnCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.option_menu, menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.option_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
+        switch (item.getItemId()) {
             case R.id.margarita:
                 cheeseCheckBox.setChecked(true);
                 tomatoCheckBox.setChecked(true);
@@ -119,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
                 oliveCheckBox.setChecked(true);
                 mushroomCheckBox.setChecked(true);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
